@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from papp.models import user_data
-
+import socket
 # Create your views here.
 
 # Universal values here.
@@ -33,6 +33,9 @@ y=25
 z=26
 
 def index(request):
+
+	  
+
 	activelink = 'active'
 	return render(request, 'papp/index.html')
 
@@ -66,7 +69,11 @@ def reasult(request):
 
 	print("Multiplaction of all the elements of an array: " + str(into));
 
-	ins = user_data(name=val1)
+	
+	hostname = socket.gethostname()    
+	IPAddr = socket.gethostbyname(hostname) 
+
+	ins = user_data(name=val1, Ip=IPAddr, host_name = hostname)
 	ins.save()
 	
 	return render(request, 'papp/index.html', {'reasult2':sum, 'result3':into, 'Value':val1})
