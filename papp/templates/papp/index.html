@@ -49,26 +49,37 @@
   <div class="card flex position-absolute top-50 start-50 translate-middle" style="max-width: 32rem;min-width: 15rem;background: #1f2937;">
     <h5 class="card-header text-center" style="background-color: #374151;">Enter Your Name</h5>
     <div class="card-body ">
+      {% csrf_token %}
       <form method=GET action="/reasult">
         <div class="input-group mb-3">
           <input type="text" value="{{Value}}" name="name" class="form-control text-center" placeholder="Your Good Name" aria-label="Username" aria-describedby="basic-addon1" style="background-color: #111827; color: #9ca3af;" onkeypress="return (event.charCode > 64 && 
+      }
 	event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 12 && event.charCode < 14 )" autofocus>
           <button type="submit" class="btn btn-outline-secondary bi bi-search rounded-end" type="button" id="button-addon2"></button>
 
           <div class="input-group mb-3 mt-3">
             <span class="input-group-text btn-outline-secondary active" id="basic-addon1" style="background-color: #374151;">+</span>
-            <input type="text" value="{{reasult2}}" class="form-control text-center" placeholder="Addition" aria-label="Username" aria-describedby="basic-addon1" style="background-color: #111827; color: #9ca3af;" readonly>
+            <input type="text" value="{{reasult2}}" class="form-control text-center" placeholder="Addition" aria-label="Username" name="add" aria-describedby="basic-addon1" style="background-color: #111827; color: #9ca3af;" readonly>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text btn-outline-secondary active" id="basic-addon1" style="background-color: #374151;">×</span>
-            <input type="text" value="{{result3}}" class="form-control text-center" placeholder="Multiplication" aria-label="Username" aria-describedby="basic-addon1" style="background-color: #111827; color: #9ca3af;" readonly>
+            <input type="text" value="{{result3}}" class="form-control text-center" placeholder="Multiplication" aria-label="Username" name="into" aria-describedby="basic-addon1" style="background-color: #111827; color: #9ca3af;" readonly>
           </div>
           <a class="btn btn-outline-secondary rounded" href='/' type="button" id="button-addon2">Clear</a>
         </div>
       </form>
       
     </div>
+
   </div>
+
+  <nav class="navbar fixed-bottom navbar-dark bg-dark">
+  <div class="container-fluid">
+    <h1 class="navbar-brand" >By Pranav Deepak Agarkar</h1>
+  </div>
+</nav>
+
+  
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->

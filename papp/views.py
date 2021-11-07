@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from papp.models import user_data
 
 # Create your views here.
 
@@ -64,5 +65,8 @@ def reasult(request):
 		into = into * arr[i];
 
 	print("Multiplaction of all the elements of an array: " + str(into));
+
+	ins = user_data(name=val1)
+	ins.save()
 	
 	return render(request, 'papp/index.html', {'reasult2':sum, 'result3':into, 'Value':val1})
