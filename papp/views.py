@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from papp.models import user_data
 import socket
+import datetime
+import pytz
 # Create your views here.
 
 # Universal values here.
-a=1 
+a=1
 b=2
 c=3
 d=4
@@ -34,7 +36,7 @@ z=26
 
 def index(request):
 
-	  
+
 
 	activelink = 'active'
 	return render(request, 'papp/index.html')
@@ -46,14 +48,14 @@ def reasult(request):
 	n = [ord(x) - 96 for x in l]
 	print(n)
 
-	#Initialize array     
-	arr = n;     
-	sum = 0;    
-	     
-	#Loop through the array to calculate sum of elements    
-	for i in range(0, len(arr)):    
-	   sum = sum + arr[i];    
-	     
+	#Initialize array
+	arr = n;
+	sum = 0;
+
+	#Loop through the array to calculate sum of elements
+	for i in range(0, len(arr)):
+	   sum = sum + arr[i];
+
 	print("Sum of all the elements of an array: " + str(sum));
 
 	############# Multiplaction ###########
@@ -69,11 +71,12 @@ def reasult(request):
 
 	print("Multiplaction of all the elements of an array: " + str(into));
 
-	
-	hostname = socket.gethostname()    
-	IPAddr = socket.gethostbyname(hostname) 
+	current_time = datetime.datetime.now(pytz.timezone('Asia/Kolkata'))
 
-	ins = user_data(name=val1, Ip=IPAddr, host_name = hostname)
+	hostname = socket.gethostname()
+	IPAddr = socket.gethostbyname(hostname)
+
+	ins = user_data(name=val1, Ip=IPAddr, host_name = hostname, dateTime1=current_time)
 	ins.save()
-	
+
 	return render(request, 'papp/index.html', {'reasult2':sum, 'result3':into, 'Value':val1})
